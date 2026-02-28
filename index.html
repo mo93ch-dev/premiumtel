@@ -3,67 +3,328 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>آریا پرداخت</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<title>خرید اکانت تلکرام پریمیوم</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {font-family:'Vazirmatn',Tahoma,sans-serif;background:#1c1c1c;margin:0;padding:0;color:white;overflow-x:hidden;}
+.container{max-width:700px;margin:50px auto;background:#2c2c2c;border-radius:20px;padding:30px 25px;box-shadow:0 15px 35px rgba(0,0,0,0.5);border-top:5px solid #0088cc;position:relative;}
+h2{text-align:center;color:#0088cc;margin-bottom:25px;font-size:28px;}
+.row{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px;align-items:center;}
+.row .group{flex:1;display:flex;gap:10px;flex-direction:column;}
+label{display:block;margin-bottom:5px;font-weight:bold;color:#0088cc;}
+input, select{padding:12px;border-radius:10px;border:1px solid #555;font-size:15px;transition:0.3s;width:100%;background:#3c3c3c;color:white;}
+input::placeholder, select option{color:#ccc;}
+input:focus, select:focus{border-color:#0088cc;outline:none;box-shadow:0 0 8px rgba(0,136,204,0.5);}
+button{background:#0088cc;color:white;border:none;font-weight:bold;cursor:pointer;transition:0.3s;font-size:16px;border-radius:10px;padding:10px 15px;}
+button:hover{background:#006699;transform: translateY(-2px);}
+.result, #historyBox, #detailsPage, #paymentPage{margin-top:25px;padding:20px;background:#3a3a3a;border-radius:15px;display:none;animation:fadeIn 0.5s;border-left:5px solid #0088cc;color:white;max-height:400px;overflow:auto;}
+#paymentPage, #detailsPage{overflow-y:auto;max-height:500px;padding-right:10px;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(-10px);}to{opacity:1; transform:translateY(0);}}
+.detail-item{margin:10px 0;font-size:15px;padding:12px;border-radius:10px;background:#2a2a2a;display:flex;flex-direction:column;align-items:flex-start;gap:5px;}
+.detail-item span, .detail-item b{margin-bottom:3px;}
+.code{font-size:20px;font-weight:bold;color:#0088cc;}
+.copy-btn{background:#00aaff;margin-left:10px;transition:0.3s;border:none;padding:5px 10px;border-radius:10px;color:white;cursor:pointer;font-size:14px;margin-top:5px;}
+.copy-btn:hover{background:#0088cc;color:white;}
+.history-btn{background:#ffaa00 !important;color:white;display:inline-flex;align-items:center;gap:5px;border-radius:10px;font-size:15px;padding:8px 10px;font-weight:bold;border:none;}
+.arrow{font-size:16px;transition:0.3s;}
+.upload-btn{display:inline-block;background:#0088cc;color:white;padding:10px 15px;border-radius:10px;cursor:pointer;font-weight:bold;margin-top:5px;}
+.upload-btn:hover{background:#006699;}
+#confirmPaymentBtn:disabled{background:#555;cursor:not-allowed;}
+#cryptoOptions{display:none;margin-top:10px;}
+#amountEquivalent{margin-top:15px;color:#ffd700;font-weight:bold;}
+.redAlert{color:#ff4c4c;font-weight:bold;}
+.closeBtn{position:absolute;top:15px;right:15px;background:#e53935;border:none;color:white;font-size:18px;padding:5px 10px;border-radius:50%;cursor:pointer;}
+.card{background:#2a2a2a;padding:15px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.card b{color:#00d4ff;}
+.copy-section{display:flex;align-items:center;gap:5px;}
+.copy-section input{flex:1;padding:8px;border-radius:8px;background:#3a3a3a;border:1px solid #555;color:white;}
+</style>
 </head>
 <body>
 
-<header>
-<div onclick="toggleMenu()">☰</div>
-<div>آریا پرداخت</div>
-<div>
-<span class="top-icon account" onclick="window.location.href='https://mo93ch-dev.github.io/esabdaritel'">💼</span>
-<img class="top-icon tabtoearn" onclick="window.location.href='https://mo93ch-dev.github.io/gametel'" src="https://cdn.imgurl.ir/uploads/d265288_3187.png">
-<img class="top-icon cloud" onclick="openCloud()" src="https://cdn.imgurl.ir/uploads/f730250_3200.png">
-</div>
-</header>
+<div class="container">
+<button class="closeBtn" id="closeFormBtn">✖</button>
+<h2>خرید اکانت تلگرام پریمیوم</h2>
 
-<div class="main-menu" id="homePage">
-<a href="https://mo93ch-dev.github.io/havaletel" class="menu-item"><div class="icon-box"><span>💸</span></div><div class="title">حواله پول</div></a>
-<a href="https://mo93ch-dev.github.io/internettel" class="menu-item"><div class="icon-box"><span>🌐</span></div><div class="title">بسته انترنت</div></a>
-<a href="https://mo93ch-dev.github.io/credittel" class="menu-item"><div class="icon-box"><span>📱</span></div><div class="title">کریدیت مبایل</div></a>
-<a href="https://mo93ch-dev.github.io/mobadiltel" class="menu-item"><div class="icon-box"><span>💱</span></div><div class="title">مبدل واحد پول</div></a>
-<a href="#" class="menu-item" onclick="window.location.href='https://t.me/afgcoinnews'"><div class="icon-box"><img class="top-icon telegram" src="https://cdn.imgurl.ir/uploads/x908302_3211.png"></div><div class="title">تلگرام پریمیوم</div></a>
-<a href="#" class="menu-item" onclick="window.location.href='https://t.me/afgcoinnews'"><div class="icon-box"><span>💎</span></div><div class="title">الماس IMO</div></a>
-<a href="#" class="menu-item" onclick="window.location.href='https://t.me/afgcoinnews'"><div class="icon-box"><span>🎮</span></div><div class="title">یوسی پابجی</div></a>
-<a href="#" class="menu-item" onclick="window.location.href='https://t.me/afgcoinnews'"><div class="icon-box"><span>💰</span></div><div class="title">ارز دیجیتال</div></a>
-<a href="#" class="menu-item" onclick="window.location.href='https://t.me/afgcoinnews'"><div class="icon-box"><span>👤</span></div><div class="title">ثبت نام صرافان</div></a>
+<div class="row form-row">
+<div class="group">
+<input type="text" id="buyerName" placeholder="نام و تخلص">
+<input type="text" id="fatherName" placeholder="آیدی تلگرام">
+<input type="text" id="phoneNumber" placeholder="شماره تلفن">
+</div>
 </div>
 
-<div class="sidebar" id="sidebar">
-<div class="profile-box">
-<img id="profileImg" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="پروفایل" onclick="document.getElementById('fileInput').click();">
-<input type="text" id="profileName" placeholder="اسم خود را وارد کنید">
-<input type="file" id="fileInput" accept="image/*" style="display:none">
+<div class="row form-row">
+<div class="group">
+<select id="planSelect">
+<option value="">انتخاب پلن پریمیوم</option>
+<option value="600">ماهانه - ۶۰۰ افغانی</option>
+<option value="1600">سه ماهه - ۱۶۰۰ افغانی</option>
+<option value="2200">شش ماهه - ۲۲۰۰ افغانی</option>
+<option value="3300">یک ساله - ۳۳۰۰ افغانی</option>
+</select>
+</div>
 </div>
 
-<button onclick="window.location.href='https://mo93ch-dev.github.io/esabdaritel'">💼 حسابداری</button>
-<button onclick="window.location.href='https://mo93ch-dev.github.io/mashinesabtel'">🧮 ماشین حساب</button>
-<button onclick="window.location.href='https://mo93ch-dev.github.io/mobadiltel'">💱 مبدل واحد پول</button>
-
-<button id="settingsBtn">⚙️ تنظیمات</button>
-<div class="settings-sub" id="settingsSub">
-<button onclick="toggleTheme()">🌙 تغییر تم</button>
+<div class="row form-row">
+<label style="width:100%;">روش پرداخت</label>
+<select id="paymentMethod">
+<option value="toman" selected>تومان</option>
+<option value="starrs">استارز</option>
+<option value="crypto">ارز دیجیتال</option>
+</select>
 </div>
 
-<button onclick="window.open('https://t.me/mogomogo','_blank')">📩 پشتیبانی</button>
+<div id="cryptoOptions">
+<label style="width:100%;">انتخاب ارز دیجیتال</label>
+<select id="cryptoType">
+<option value="USDT">USDT</option>
+<option value="PI">PI NETWORK</option>
+</select>
 </div>
 
-<div class="cloud-page" id="cloudPage">
-<div class="chat-header">
-<span onclick="closeCloud()" style="cursor:pointer;font-weight:700;color:var(--back-color)">← بازگشت</span>
-<span>یاداشت های شما</span>
-</div>
-<div class="chat-body" id="chatBody"></div>
-<div class="chat-input"><input type="text" id="msgInput"><button onclick="sendMessage()">ارسال</button></div>
+<p id="amountEquivalent"></p>
+
+<div style="display:flex;gap:10px;margin-top:20px;">
+<button id="submitBtn" onclick="submitForm()">تأیید و ادامه</button>
+<button class="history-btn" id="historyBtn">تاریخچه سفارش‌ها <span class="arrow">▼</span></button>
 </div>
 
-<!-- زیرنویس متحرک پایین صفحه -->
-<div id="bottomNotice">
-  <div id="scrollText">⚠️ توجه: تمام خدمات موجود در حال حاضر آزمایشی می‌باشند ⚠️</div>
+<!-- صفحه پرداخت -->
+<div id="paymentPage">
+<h2 style="color:#00d4ff;text-align:center;">مرحله پرداخت</h2>
+<p id="paymentText" class="redAlert" style="font-weight:bold;line-height:1.6;"></p>
+
+<div id="paymentInstructions" style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
+  <div class="card" id="cardSection" style="display:none;">
+    <b>شماره کارت:</b> <span id="cardNumber"></span>
+    <button class="copy-btn" onclick="copyText('cardNumber')">کپی</button>
+  </div>
+  <div class="card" id="starrsSection" style="display:none;">
+    <b>آیدی استارز:</b> <span id="starrsID">@mogomogo</span>
+    <button class="copy-btn" onclick="copyText('starrsID')">کاپی</button>
+  </div>
+  <div class="card" id="usdtSection" style="display:none;">
+    <b>آدرس USDT (شبکه TON):</b> <span id="usdtAddress"></span>
+    <button class="copy-btn" onclick="copyText('usdtAddress')">کاپی</button>
+  </div>
+  <div class="card" id="piSection" style="display:none;">
+    <b>آدرس PI NETWORK:</b> <span id="piuhhvuvivivvvyvu"></span>
+    <button class="copy-btn" onclick="copyText('piAddress')">کاپی</button>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<label for="paymentReceipt" class="upload-btn">انتخاب عکس رسید</label>
+<input type="file" id="paymentReceipt" accept="image/*" hidden>
+<p id="fileName" style="color:#00ff99;font-size:14px;"></p>
+<button id="confirmPaymentBtn" disabled>تأیید و ثبت سفارش</button>
+<button class="copy-btn" style="background:#e53935;margin-top:10px;" onclick="closePaymentPage()">بستن صفحه</button>
+</div>
+
+<!-- صفحه جزئیات -->
+<div id="detailsPage">
+<h2 style="color:#00d4ff;text-align:center;">جزئیات سفارش</h2>
+<div id="details"></div>
+<button class="copy-btn" onclick="copyDetails()">کاپی جزئیات</button>
+<button class="copy-btn" style="background:#e53935;" onclick="closeDetails()">بستن</button>
+</div>
+
+<div id="historyBox"></div>
+</div>
+
+<script>
+const allOrders = JSON.parse(localStorage.getItem("allOrders")||"[]");
+const planSelect = document.getElementById("planSelect");
+const paymentMethod = document.getElementById("paymentMethod");
+const cryptoOptions = document.getElementById("cryptoOptions");
+const cryptoType = document.getElementById("cryptoType");
+const amountEquivalent = document.getElementById("amountEquivalent");
+const buyerInput = document.getElementById("buyerName");
+const fatherInput = document.getElementById("fatherName");
+const phoneInput = document.getElementById("phoneNumber");
+
+function updateEquivalent(){
+  let baseAmount = parseInt(planSelect.value)||0;
+  let method = paymentMethod.value;
+  let amount = baseAmount;
+  if(method==="toman"){amount*=1.05;} else {amount*=1.15;}
+  let equivalent="";
+  if(method==="toman"){equivalent = `${Math.round(amount*(1000000/370)).toLocaleString()} تومان`;}
+  if(method==="starrs"){equivalent = `${amount.toFixed(2)} استارز`;}
+  if(method==="crypto"){equivalent = cryptoType.value==="PI"?(amount/10.4).toFixed(2)+" پای":(amount/65).toFixed(2)+" USDT";}
+  amountEquivalent.innerText = amount>0?`مبلغ با کمیشن: ${amount.toFixed(2)} افغانی → معادل: ${equivalent}`:"";
+}
+
+planSelect.addEventListener("change",updateEquivalent);
+paymentMethod.addEventListener("change",()=>{cryptoOptions.style.display=paymentMethod.value==="crypto"?"block":"none";updateEquivalent();});
+cryptoType.addEventListener("change",updateEquivalent);
+
+function submitForm(){
+  let plan = parseInt(planSelect.value);
+  let method = paymentMethod.value;
+  let buyer = buyerInput.value.trim();
+  let father = fatherInput.value.trim();
+  let phone = phoneInput.value.trim();
+  if(!plan || !buyer || !father || !phone){alert("لطفاً همه فیلدها را کامل کنید");return;}
+  let amount = plan;
+  if(method==="toman"){amount*=1.05;} else {amount*=1.15;}
+  window.pendingOrder={
+    buyerName:buyer,
+    fatherName:father,
+    phoneNumber:phone,
+    plan:planSelect.options[planSelect.selectedIndex].text,
+    amount,
+    method,
+    cryptoSelected:cryptoType.value
+  };
+  openPaymentPage();
+}
+
+const paymentPage = document.getElementById("paymentPage");
+const receiptInput = document.getElementById("paymentReceipt");
+const confirmPaymentBtn = document.getElementById("confirmPaymentBtn");
+const detailsDiv = document.getElementById("details");
+
+const cardSection = document.getElementById("cardSection");
+const starrsSection = document.getElementById("starrsSection");
+const usdtSection = document.getElementById("usdtSection");
+const piSection = document.getElementById("piSection");
+
+function openPaymentPage(){
+  document.querySelectorAll(".form-row").forEach(el=>el.style.display="none");
+  document.getElementById("submitBtn").style.display="none";
+  paymentPage.style.display="block";
+  paymentPage.scrollTop = 0;
+
+  let order = window.pendingOrder;
+  [cardSection, starrsSection, usdtSection, piSection].forEach(el=>el.style.display="none");
+
+  let paymentText = "";
+  if(order.method==="toman"){
+    cardSection.style.display="flex";
+    document.getElementById("cardNumber").innerText = "6274 1212 0078 0559 بانک اقتصادنوین - محمد گلزار";
+    paymentText = `لطفاً مبلغ ${Math.round(order.amount*(1000000/370)).toLocaleString()} تومان به شماره کارت زیر واریز کنید.`;
+  } else if(order.method==="starrs"){
+    starrsSection.style.display="flex";
+    paymentText = `لطفاً مبلغ ${order.amount.toFixed(2)} استارز به آیدی @mogomogo ارسال کنید.`;
+  } else if(order.method==="crypto"){
+    if(order.cryptoSelected==="PI"){
+      piSection.style.display="flex";
+      document.getElementById("piAddress").innerText = "greenfield (شبکه PI NETWORK)";
+      paymentText = "توجه: تراکنش فقط روی شبکه PI NETWORK انجام شود.";
+    } else {
+      usdtSection.style.display="flex";
+      document.getElementById("usdtAddress").innerText = "iebdjdjddjdjdj (شبکه TON)";
+      paymentText = "توجه: تراکنش فقط روی شبکه TON انجام شود.";
+    }
+  }
+
+  document.getElementById("paymentText").innerText = paymentText;
+  confirmPaymentBtn.disabled = true;
+  confirmPaymentBtn.style.background="#555";
+  document.getElementById("fileName").innerText = "";
+}
+
+receiptInput.addEventListener("change",function(){
+  if(this.files.length>0){confirmPaymentBtn.disabled=false;confirmPaymentBtn.style.background="#28a745";}
+  else{confirmPaymentBtn.disabled=true;confirmPaymentBtn.style.background="#555";}
+});
+
+confirmPaymentBtn.addEventListener("click",function(){
+  let order = window.pendingOrder;
+  let tracking = Math.floor(1000+Math.random()*9000);
+  let now = new Date();
+  let dateTime = now.toLocaleString();
+  let detailsHTML = `
+    <div class="detail-item"><b>پلن انتخاب شده:</b> ${order.plan}</div>
+    <div class="detail-item"><b>شماره سفارش:</b> <span class="code">${tracking}</span></div>
+    <div class="detail-item"><b>نام کاربر:</b> ${order.buyerName}</div>
+    <div class="detail-item"><b>آیدی تلگرام:</b> ${order.fatherName}</div>
+    <div class="detail-item"><b>شماره تلفن:</b> ${order.phoneNumber}</div>
+    <div class="detail-item"><b>مبلغ با کمیشن:</b> ${order.amount.toFixed(2)} افغانی</div>
+    <div class="detail-item"><b>روش پرداخت:</b> ${order.method==="starrs"?"استارز":order.cryptoSelected==="PI"?"PI NETWORK":"USDT"}</div>
+    <div class="detail-item"><b>معادل:</b> ${order.method==="starrs"?order.amount.toFixed(2):(order.cryptoSelected==="PI"? (order.amount/10.4).toFixed(2)+" پای":(order.amount/65).toFixed(2)+" USDT")} / ${Math.round(order.amount*(1000000/370)).toLocaleString()} تومان</div>
+    <div class="detail-item"><b>تاریخ و ساعت:</b> ${dateTime}</div>`;
+  detailsDiv.innerHTML=detailsHTML;
+  document.getElementById("detailsPage").style.display="block";
+  document.getElementById("detailsPage").scrollTop = 0;
+  paymentPage.style.display="none";
+
+  allOrders.unshift({...order,tracking,dateTime});
+  localStorage.setItem("allOrders",JSON.stringify(allOrders));
+  window.pendingOrder=null;
+  updateHistory();
+});
+
+function closeDetails(){
+  document.getElementById("detailsPage").style.display="none";
+  document.querySelectorAll(".form-row").forEach(el=>el.style.display="flex");
+  document.getElementById("submitBtn").style.display="inline-block";
+}
+function closePaymentPage(){
+  paymentPage.style.display="none";
+  document.querySelectorAll(".form-row").forEach(el=>el.style.display="flex");
+  document.getElementById("submitBtn").style.display="inline-block";
+}
+
+function copyText(id){
+  const el=document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText);
+  alert("کاپی شد: "+el.innerText);
+}
+function copyDetails(){
+  navigator.clipboard.writeText(detailsDiv.innerText);
+  alert("جزئیات با موفقیت کاپی شد");
+}
+
+const historyBox=document.getElementById("historyBox");
+let historyVisible=false;
+document.getElementById("historyBtn").addEventListener("click",toggleHistory);
+
+function toggleHistory(){
+  historyVisible=!historyVisible;
+  document.querySelector(".arrow").innerText=historyVisible?"▲":"▼";
+  historyBox.style.display=historyVisible?"block":"none";
+  if(historyVisible){updateHistory();}
+}
+
+function updateHistory(){
+  if(allOrders.length===0){historyBox.innerHTML="<p style='color:#ccc;'>هیچ سفارشی ثبت نشده است.</p>";return;}
+  let html = allOrders.map((o,i)=>`<div class="detail-item" style="flex-direction:column;align-items:flex-start;">
+    <div>
+    <b>شماره سفارش:</b> ${o.tracking},
+    <b>نام:</b> ${o.buyerName},
+    <b>آیدی تلگرام:</b> ${o.fatherName},
+    <b>تلفن:</b> ${o.phoneNumber},
+    <b>پلن:</b> ${o.plan},
+    <b>مبلغ:</b> ${o.amount.toFixed(2)} افغ<b>مبلغ:</b> ${o.amount.toFixed(2)} افغانی,
+    <b>روش پرداخت:</b> ${o.method==="starrs"?"استارز":o.cryptoSelected==="PI"?"PI NETWORK":"USDT"},
+    <b>تاریخ:</b> ${o.dateTime}
+    </div>
+    <button class="copy-btn" onclick="copyHistory(${i})">کاپی</button>
+    </div>`).join("");
+  historyBox.innerHTML=html;
+  historyBox.scrollTop=0;
+}
+
+function copyHistory(i){
+  let o=allOrders[i];
+  let text=`شماره سفارش: ${o.tracking}
+نام: ${o.buyerName}
+آیدی تلگرام: ${o.fatherName}
+تلفن: ${o.phoneNumber}
+پلن: ${o.plan}
+مبلغ: ${o.amount.toFixed(2)} افغانی
+روش پرداخت: ${o.method==="starrs"?"استارز":o.cryptoSelected==="PI"?"PI NETWORK":"USDT"}
+تاریخ: ${o.dateTime}`;
+  navigator.clipboard.writeText(text);
+  alert("جزئیات سفارش با موفقیت کاپی شد");
+}
+
+// بستن فرم اصلی
+document.getElementById("closeFormBtn").addEventListener("click",()=>{
+  window.location.href="https://mo93ch-dev.github.io/Aryapardakht";
+});
+</script>
 </body>
 </html>
